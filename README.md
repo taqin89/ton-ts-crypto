@@ -1,6 +1,6 @@
 # TON crypto
 
-[![Version npm](https://img.shields.io/npm/v/ton-crypto.svg?logo=npm)](https://www.npmjs.com/package/ton-crypto)
+[![Version npm](https://img.shields.io/npm/v/@ton/crypto.svg?logo=npm)](https://www.npmjs.com/package/@ton/crypto)
 
 Cross-platform crypto primitives for building apps for TON blockchain. Uses native crypto available in NodeJS or in browser.
 
@@ -9,10 +9,10 @@ Cross-platform crypto primitives for building apps for TON blockchain. Uses nati
 - 🦺 All required crypto for TON and apps
 - 💪 Works everywhere: Browser, NodeJS and React Native
 - 🚀 Promise-based API
-- 🏎 Built on top of Buffer (polifil required in browsers)
+- 🏎 Built on top of Buffer (polyfill required in browsers)
 - 🍰 No reimplemented crypto
 
-## Imlemented
+## Implemented
 
 - SHA-256
 - SHA-512
@@ -26,10 +26,10 @@ Cross-platform crypto primitives for building apps for TON blockchain. Uses nati
 ## Install
 
 ```bash
-yarn add ton-crypto buffer
+yarn add @ton/crypto buffer
 ```
 
-#### Browser polifil
+#### Browser polyfill
 
 ```js
 // Add before using library
@@ -44,7 +44,7 @@ expo install expo-random
 
 ## Secure random
 ```js
-import { getSecureRandomBytes, getSecureRandomWords, getSecureRandomNumber, newSecureWords, newSecurePassphrase } from 'ton-crypto';
+import { getSecureRandomBytes, getSecureRandomWords, getSecureRandomNumber, newSecureWords, newSecurePassphrase } from '@ton/crypto';
 const randomBytes: Buffer = await getSecureRandomBytes(32); // 32 random bytes
 const randomWords: Uint16Array = await getSecureRandomBytes(32); // 64 random bytes packaed into words
 const randomNumber: number = await getSecureRandomNumber(0, 10); // Random number from 0 (inclusive) to 10 (exclusive)
@@ -56,7 +56,7 @@ const securePassptrase: string = await newSecurePassphrase(10); // Random 10 wor
 All methods accept strings or Buffers as arguments.
 
 ```js
-import { sha256, sha512, pbkdf2_sha512, hmac_sha512, sha256_sync, sha512_sync } from 'ton-crypto';
+import { sha256, sha512, pbkdf2_sha512, hmac_sha512, sha256_sync, sha512_sync } from '@ton/crypto';
 
 // Async methods
 const hash1: Buffer = await sha256('hello-world');
@@ -81,7 +81,7 @@ const key: Buffer = await pbkdf2_sha512('password', 'salt', 10000, 64);
 TON uses BIP-39 styled english mnemonics with custom key deriviation and built-in checksums.
 
 ```js
-import { mnemonicNew, mnemonicValidate, mnemonicToPrivateKey, mnemonicToWalletKey, mnemonicToSeed, mnemonicWordList, KeyPair, mnemonicToHDSeed } from 'ton-crypto';
+import { mnemonicNew, mnemonicValidate, mnemonicToPrivateKey, mnemonicToWalletKey, mnemonicToSeed, mnemonicWordList, KeyPair, mnemonicToHDSeed } from '@ton/crypto';
 const password: string | null | undefined = null; // Optional password
 const mnemonics: string[] = await mnemonicNew(24, password); // Generate new menemonics
 const mnemonicsValid: boolean = await mnemonicValidate(mnemonics, password); // Validate mnemonics
@@ -96,7 +96,7 @@ const wordlist = mnemonicWordList; // BIP39 word list
 Ed25519 is used by TON in contracts to check signatures.
 
 ```js
-import { keyPairFromSeed, keyPairFromSecretKey, sign, signVerify, KeyPair } from 'ton-crypto';
+import { keyPairFromSeed, keyPairFromSecretKey, sign, signVerify, KeyPair } from '@ton/crypto';
 
 const data = Buffer.from('Hello wordl!');
 
@@ -116,7 +116,7 @@ const valid: boolean = signVerify(data, signature, keypair.public);
 ## NaCL-compatible symmetrict encryption
 
 ```js
-import { sealBox, openBox, getSecureRandomBytes } from 'ton-crypto';
+import { sealBox, openBox, getSecureRandomBytes } from '@ton/crypto';
 
 const data = Buffer.from('Hello wordl!');
 
@@ -134,7 +134,7 @@ const decrypted: Buffer | null = openBox(sealed, nonce, key); // Decrypted with 
 Generates SLIP-10 compatible hierarchy of keys
 
 ```js
-import { newMnemonics, mnemonicToHDSeed, deriveEd25519Path, KeyPair } from 'ton-crypto';
+import { newMnemonics, mnemonicToHDSeed, deriveEd25519Path, KeyPair } from '@ton/crypto';
 
 // Generate HD seed
 // You can just generate 64-128 random bytes, but this way you will be able to 
@@ -155,7 +155,7 @@ const keyPair: KeyPair = keyPairFromSeed(derivedSeed);
 Generates SLIP-21 compatible hierarchy of keys for symmetric encryption.
 
 ```js
-import { newMnemonics, mnemonicToHDSeed, deriveSymmetricPath, KeyPair } from 'ton-crypto';
+import { newMnemonics, mnemonicToHDSeed, deriveSymmetricPath, KeyPair } from '@ton/crypto';
 
 // Generate HD seed
 // You can just generate 64-128 random bytes, but this way you will be able to 
