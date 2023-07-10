@@ -9,7 +9,7 @@
 import {
     getSecureRandomBytes as internalBytes,
     getSecureRandomWords as internalWords
-} from 'ton-crypto-primitives';
+} from '@ton/crypto-primitives';
 
 export async function getSecureRandomBytes(size: number): Promise<Buffer> {
     return internalBytes(size);
