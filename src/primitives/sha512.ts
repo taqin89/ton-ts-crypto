@@ -7,7 +7,7 @@
  */
 
 import jsSHA from 'jssha'
-import { sha512 as internal } from 'ton-crypto-primitives';
+import { sha512 as internal } from '@ton/crypto-primitives';
 
 export function sha512_sync(source: Buffer | string): Buffer {
     let src: string;
