@@ -116,7 +116,7 @@ describe('mnemonics', () => {
                 let seed = await mnemonicToHDSeed(tv.root);
                 let derived = await deriveMnemonicsPath(seed, p.path);
                 expect(await mnemonicValidate(derived)).toBe(true);
-                expect(derived).toMatchObject(p.mnemonics);
+                expect(derived).toEqual(p.mnemonics);
             });
         }
     }
