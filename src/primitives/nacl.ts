@@ -6,6 +6,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+// Port of TweetNaCl / NaCl to JavaScript for modern browsers and Node.js. Public domain.
+// TweetNaCl.js 是一个高效、简洁且易于使用的加密库，专门用于实现现代加密算法。
+// 它是 NaCl (Networking and Cryptography library) 的 JavaScript 实现，
+// 旨在提供安全的加密原语，以支持端对端加密通信、身份验证等应用。
+// TweetNaCl.js 的特点是小巧（只有几千行代码）且优化性能，适用于 Web 和 Node.js 环境。
+// Tweet：这个前缀是为了强调 “小巧” 和 “快速”。
 import nacl from 'tweetnacl';
 
 export type KeyPair = {
